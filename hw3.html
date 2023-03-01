@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <title>02dynamicStyleImg.html</title>
+    <style>
+        .s {
+            filter: grayscale(1);
+            /*沒有任何色彩的黑白影像*/
+
+        }
+
+        .n {
+            filter: grayscale(0);
+            /*顏色不變*/
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div>
+        <img id="idstar1" class="s" src="Images/star.jpg" />
+
+        <img id="idstar2" class="s" src="Images/star.jpg" />
+
+        <img id="idstar3" class="s" src="Images/star.jpg" />
+
+        <img id="idstar4" class="s" src="Images/star.jpg" />
+
+        <img id="idstar5" class="s" src="Images/star.jpg" /><br><br>
+        <span style="font-size: large;font-style:italic;">點擊星星可評分，雙擊星星重置</span><br><br>
+        <span id="msg"></span>
+    </div>
+
+
+    <script>
+        for (let i = 1; i < 6; i++) {
+            document.getElementById(`idstar${i}`).addEventListener("mouseout", mouseout)
+            document.getElementById(`idstar${i}`).addEventListener("dblclick", reset)
+            document.getElementById(`idstar${i}`).addEventListener("mouseover", mouseover)
+        }
+
+        // document.getElementById("idstar1").addEventListener("mouseover", mouseover1)
+        // document.getElementById("idstar2").addEventListener("mouseover", mouseover2)
+        // document.getElementById("idstar3").addEventListener("mouseover", mouseover3)
+        // document.getElementById("idstar4").addEventListener("mouseover", mouseover4)
+        // document.getElementById("idstar5").addEventListener("mouseover", mouseover5)
+
+        document.getElementById("idstar1").addEventListener("click", click1)
+        document.getElementById("idstar2").addEventListener("click", click2)
+        document.getElementById("idstar3").addEventListener("click", click3)
+        document.getElementById("idstar4").addEventListener("click", click4)
+        document.getElementById("idstar5").addEventListener("click", click5)
+
+
+        function mouseover() {
+
+            let imgobj = document.images;
+            for (let i = 1; i <= this.id.substr(6); i++) {
+                document.getElementById(`idstar${i}`).className = "n";
+                document.getElementById("msg").innerHTML = `評分為....${i}`
+            }
+            
+
+        }
+        // function mouseover2() {
+        //     document.getElementById("idstar1").className = "n";
+        //     document.getElementById("idstar2").className = "n";
+        //     document.getElementById("msg").innerHTML = "評分為....2"
+        // }
+
+        // function mouseover3() {
+        //     document.getElementById("idstar1").className = "n";
+        //     document.getElementById("idstar2").className = "n";
+        //     document.getElementById("idstar3").className = "n";
+        //     document.getElementById("msg").innerHTML = "評分為....3"
+        // }
+
+        // function mouseover4() {
+        //     document.getElementById("idstar1").className = "n";
+        //     document.getElementById("idstar2").className = "n";
+        //     document.getElementById("idstar3").className = "n";
+        //     document.getElementById("idstar4").className = "n";
+        //     document.getElementById("msg").innerHTML = "評分為....4"
+        // }
+        // function mouseover5() {
+        //     document.getElementById("idstar1").className = "n";
+        //     document.getElementById("idstar2").className = "n";
+        //     document.getElementById("idstar3").className = "n";
+        //     document.getElementById("idstar4").className = "n";
+        //     document.getElementById("idstar5").className = "n";
+        //     document.getElementById("msg").innerHTML = "評分為....5"
+        // }
+        function mouseout() {
+            document.getElementById("idstar1").className = "s"
+            document.getElementById("idstar2").className = "s"
+            document.getElementById("idstar3").className = "s"
+            document.getElementById("idstar4").className = "s"
+            document.getElementById("idstar5").className = "s"
+        }
+        function click1() {
+            document.getElementById("idstar1").className = "n";
+            document.getElementById("msg").innerHTML = "你給1顆星"
+            document.getElementById("idstar1").removeEventListener("mouseout", mouseout);
+            document.getElementById("idstar1").removeEventListener("mouseover", mouseover);
+        }
+        function click2() {
+            document.getElementById("idstar2").className = "n";
+            document.getElementById("msg").innerHTML = "你給2顆星"
+            document.getElementById("idstar2").removeEventListener("mouseout", mouseout);
+            document.getElementById("idstar2").removeEventListener("mouseover", mouseover);
+        }
+        function click3() {
+            document.getElementById("idstar3").className = "n";
+            document.getElementById("msg").innerHTML = "你給3顆星"
+            document.getElementById("idstar3").removeEventListener("mouseout", mouseout);
+            document.getElementById("idstar3").removeEventListener("mouseover", mouseover);
+        }
+        function click4() {
+            document.getElementById("idstar4").className = "n";
+            document.getElementById("msg").innerHTML = "你給4顆星"
+            document.getElementById("idstar4").removeEventListener("mouseout", mouseout);
+            document.getElementById("idstar4").removeEventListener("mouseover", mouseover);
+        }
+        function click5() {
+            document.getElementById("idstar5").className = "n";
+            document.getElementById("msg").innerHTML = "你給5顆星"
+            document.getElementById("idstar5").removeEventListener("mouseout", mouseout);
+            document.getElementById("idstar5").removeEventListener("mouseover", mouseover);
+        }
+
+        function reset() {
+            for (let i = 1; i < 6; i++)
+                document.getElementById(`idstar${i}`).addEventListener("mouseout", mouseout)
+            for (let i = 1; i <= this.id.substr(6); i++) {
+                document.getElementById(`idstar${i}`).className = "n";
+            }
+
+            // document.getElementById("idstar1").addEventListener("mouseover", mouseover1)
+            // document.getElementById("idstar2").addEventListener("mouseover", mouseover2)
+            // document.getElementById("idstar3").addEventListener("mouseover", mouseover3)
+            // document.getElementById("idstar4").addEventListener("mouseover", mouseover4)
+            // document.getElementById("idstar5").addEventListener("mouseover", mouseover5)
+
+            document.getElementById("msg").innerHTML = ""
+
+        }
+
+
+
+    </script>
+
+
+
+
+</body>
